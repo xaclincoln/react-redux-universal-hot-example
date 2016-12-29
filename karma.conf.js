@@ -7,7 +7,7 @@ module.exports = function (config) {
 
     singleRun: !!process.env.CI,
 
-    frameworks: [ 'mocha' ],
+    frameworks: ['mocha'],
 
     files: [
       './node_modules/phantomjs-polyfill/bind-polyfill.js',
@@ -15,10 +15,10 @@ module.exports = function (config) {
     ],
 
     preprocessors: {
-      'tests.webpack.js': [ 'webpack', 'sourcemap' ]
+      'tests.webpack.js': ['webpack', 'sourcemap']
     },
 
-    reporters: [ 'mocha' ],
+    reporters: ['mocha'],
 
     plugins: [
       require("karma-webpack"),
@@ -32,11 +32,11 @@ module.exports = function (config) {
       devtool: 'inline-source-map',
       module: {
         loaders: [
-          { test: /\.(jpe?g|png|gif|svg)$/, loader: 'url', query: {limit: 10240} },
-          { test: /\.js$/, exclude: /node_modules/, loaders: ['babel']},
+          { test: /\.(jpe?g|png|gif|svg)$/, loader: 'url', query: { limit: 10240 } },
+          { test: /\.js$/, exclude: /node_modules/, loaders: ['babel'] },
           { test: /\.json$/, loader: 'json-loader' },
-          { test: /\.less$/, loader: 'style!css!less' },
-          { test: /\.scss$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!autoprefixer?browsers=last 2 version!sass?outputStyle=expanded&sourceMap' }
+          { test: /\.less$/, loader: 'style!css!less' }
+          { test: /\.scss$/, loader: 'style!css?modules&importLoaders=2&sourceMap&localIdentName=[local]___[hash:base64:5]!postcss-loader?parser=postcss-scss' }
         ]
       },
       resolve: {
